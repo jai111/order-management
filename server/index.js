@@ -25,9 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
 app.use('/api/company', require('./routes/company'));
 app.use('/api/item', require('./routes/item'));
