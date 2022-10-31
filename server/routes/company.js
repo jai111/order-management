@@ -6,11 +6,23 @@ const mongoose = require('mongoose');
 
 router.post("/addcompany",   (req, res) => {
     const company = new Company({Name: req.body.company})
-    company.save((err, doc) =>{
+    Company.findOne({Name: req.body.company}, (err, doc) =>{
+        console.log(doc)
         if(err){return res.json({success: false, err, message: 'Some error Ocurred'})}
-        return res.status(200).json({
-            success: true
-        })
+        // if(doc.Name){
+        //     return res.json({success: false, err, message: 'Company already exist'})
+        // }
+        if( ! doc){
+            company.save((err, doc) =>{
+                if(err){return res.json({success: false, err, message: 'Some error Ocurred'})}
+                return res.status(200).json({
+                    success: true
+                })
+            })
+        }
+        else{
+            return res.json({success: false, err, message: 'company already exist'})
+        }
     })
    
 });

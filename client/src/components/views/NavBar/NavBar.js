@@ -25,11 +25,18 @@ const NavBar = () => {
     }
     
     return(
-        <header className='navbar'>
-            <div className='navbar__title navbar__item'>Order Creator</div>
-            <Link to = "/addcompany"><div className='navbar__title navbar__item'>AddCompany</div></Link> 
-            <Link to = "/additem"><div className='navbar__title navbar__item'>AddItem</div></Link> 
-            <Link to = "/download-order"><div className='navbar__title navbar__item'>DownlaodOrder</div></Link> 
+        <header className='nav'>
+            <div className='navbar__title navbar__item'>Order Creator
+            
+            </div>
+            <li><a href="#">Options</a>
+                <ul>
+                    <li><a href="/addcompany">AddCompany</a></li>
+                    <li><a href="/additem">AddItem</a></li>
+                    <li><a href="/download-order">DownlaodOrder</a></li>
+                </ul>
+            </li>
+            <a className='btn' onClick={logoutHandler}>LogOut</a>
         </header>
     )
 }

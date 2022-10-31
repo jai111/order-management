@@ -10,6 +10,8 @@ body {
     visibility: hidden;
     height: 0;
 }
+
+
 .form_wrapper {
     background: #fff;
     width: 400px;
@@ -382,6 +384,9 @@ body {
     .form_wrapper .col_half {
         width: 100%;
         float: none;
+   }
+   .form_wrapper{
+     margin: 35% auto 0;
    }
     .bottom_row .col_half {
         width: 50%;
