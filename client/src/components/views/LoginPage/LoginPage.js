@@ -35,10 +35,6 @@ let LoginPage = (props) =>{
       };
 
     let Validate = (form)=>{
-        if(!validateEmail(form.email)){
-            setMessage('Enter valid email')
-            return false
-        }
         if(!form.password){
             setMessage('Enter Password')
             return false
@@ -57,7 +53,7 @@ let LoginPage = (props) =>{
         .then(response => {
             if(response.data.loginSuccess){
                 localStorage.setItem('user',  JSON.stringify(response.data.user))
-                navigate("../", { replace: true });
+                navigate("../additem", { replace: true });
             }
             else{
                 setMessage('Check your account or password again')
@@ -105,7 +101,6 @@ let LoginPage = (props) =>{
                             <input type="password" name="password" placeholder="Password" value={formState.password}  onChange={(e)=>handleTextChange(e)} required />
                         </div>
                         <input className="button" type="button" value="Login" disabled={isSubmiting} onClick={handleSubmit}  />
-                        <Link to='/forgotpassword'><div style={{textAlign:'center', color: '#00bfff'}}>change pasword?</div></Link>
                     </form>
                 </div>
             </div>

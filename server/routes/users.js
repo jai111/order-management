@@ -22,25 +22,11 @@ router.get("/auth", auth(undefined), (req, res) => {
     });
 });
 
-router.post("/register", auth(['admin']),  (req, res) => {
+router.post("/register",   (req, res) => {
 
     const user = new User(req.body);
     user.save((err, doc) => {
         if (err) {return res.json({ success: false, err, message: 'Email already exists!!' });}
-        if(doc.role == 'student'){
-            let student = new Student()
-            student.user_id = doc
-            student.grade = req.body.grade
-            student.email = req.body.email
-            student.save()
-        }
-        if(doc.role == 'teacher'){
-            let teacher =new Teacher()
-            teacher.user_id = doc
-            teacher.subject = req.body.subject
-            teacher.email = req.body.email
-            teacher.save()
-        }
         return res.status(200).json({
             success: true
         });

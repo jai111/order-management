@@ -2,26 +2,13 @@ import React, {useReducer, useState, useEffect} from 'react'
 import { FaEnvelope, FaLock, FaUserAlt } from "react-icons/fa"
 import axios from 'axios'
 import { resolvePath, useNavigate} from 'react-router-dom'
-import * as FileSaver from "file-saver";
-import * as XLSX from "xlsx";
 
 const initialFormState = {
-    
     };
 
       
 
-let DownloadOrder = (props) =>{
-    const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
-    const fileExtension = ".xlsx";
-
-    const exportToCSV = (apiData, fileName) => {
-        const ws = XLSX.utils.json_to_sheet(apiData);
-        const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
-        const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
-        const data = new Blob([excelBuffer], { type: fileType });
-        FileSaver.saveAs(data, fileName + fileExtension);
-      };
+let DeleteOrder = (props) =>{
 
     let navigate = useNavigate()
 
@@ -63,15 +50,10 @@ let DownloadOrder = (props) =>{
             return
         }
         let formState = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
-        axios.post('/api/item/getItemByCompany', formState)
+        axios.post('/api/item/deleteOrder', formState)
         .then(response => {
             if(response.data.success){
-                    exportToCSV(response.data.data, `${formState.company} Order`)
-                    setSuccessMessage('Items success')
-                    console.log(response.data.data)
-
-                    setCompanyData(response.data.data)
-                    setMessage('')
+                    setSuccessMessage(response.data.message)
             }
             else{
                 setMessage(response.data.message)
@@ -99,7 +81,7 @@ let DownloadOrder = (props) =>{
         <div className="form_wrapper">
             <div className="form_container">
             <div className="title_container">
-                <h2>Download Order</h2>
+                <h2>Delete Order</h2>
             </div>
             <div className="row clearfix">
                 <div className="">
@@ -128,7 +110,7 @@ let DownloadOrder = (props) =>{
 
                             }
                         </div>
-                        <input className="button" type="button" value="Download" disabled={isSubmiting} onClick={handleSubmit}  />
+                        <input className="button" type="button" value="Delete" disabled={isSubmiting} onClick={handleSubmit}  />
                     </form>
                 </div>
             </div>
@@ -137,4 +119,4 @@ let DownloadOrder = (props) =>{
     )
 }
 
-export default DownloadOrder;
+export default DeleteOrder;

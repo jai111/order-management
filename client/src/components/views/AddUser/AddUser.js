@@ -5,13 +5,9 @@ import axios from 'axios'
     import { useNavigate} from 'react-router-dom'
 
 const initialFormState = {
-    firstname: "",
-    lastname: "",
     email: "",
     password: "",
-    role: "",
-    grade: "",
-    subject: ''
+    role: "",   
     };
 
 
@@ -61,9 +57,6 @@ let AddUser = (props) =>{
     let handleSubmit = () =>{
         setMessage('')
         setSuccessMessage('')
-        if(!Validate(formState)){
-            return
-        }
         axios.post('/api/users/register', formState)
         .then(response => {
             if(response.data.success){
@@ -111,62 +104,14 @@ let AddUser = (props) =>{
                             <span><FaLock style={{marginTop:'8px'}}/></span>
                             <input type="password" name="password" placeholder="Password*" value={formState.password}  onChange={(e)=>handleTextChange(e)} required />
                         </div>
-                        <div className="row clearfix">
-                            <div className="col_half">
-                                <div className="input_field">
-                                    <span><FaUserAlt style={{marginTop:'8px'}}/></span>
-                                    <input type="text" name="firstname" placeholder="First Name*" value={formState.firstname}  onChange={(e)=>handleTextChange(e)} required />
-                                </div>                                
-                            </div>
-                            <div className="col_half">
-                                <div className="input_field"> <span><FaUserAlt style={{marginTop:'8px'}}/></span>
-                                    <input type="text" name="lastname" placeholder="Last Name" value={formState.lastname}  onChange={(e)=>handleTextChange(e)}  />
-                                </div>
-                            </div>
-                        </div>
                         <div className="input_field select_option">
                             <select name='role' value={formState.role}  onChange={(e)=>handleTextChange(e)} required>
                                 <option value="" disabled selected>Role*</option>
-                                <option value='non-teacher'>Non-Teacher</option>
-                                <option value='teacher'>Teacher</option>
-                                <option value='student'>Student</option>
+                                <option value='rajesh'>Rajesh</option>
+                                <option value='manoj'>manoj</option>
                             </select>
                             <div className="select_arrow"></div>
                         </div>
-                        {
-                            formState.role == 'student'
-                            ?
-                            <div className="input_field select_option">
-                                <select name='grade' value={formState.grade}  onChange={(e)=>handleTextChange(e)} required>
-                                    <option value="" disabled selected>Grade</option>
-                                    <option value={6}>6th</option>
-                                    <option value={7}>7th</option>
-                                    <option value={8}>8th</option>
-                                    <option value={9}>9th</option>
-                                    <option value={10}>10th</option>
-                                </select>
-                                <div className="select_arrow"></div>
-                            </div>
-                            :
-                            null
-                        }
-                         {
-                            formState.role == 'teacher'
-                            ?
-                            <div className="input_field select_option">
-                                <select name='subject' value={formState.subject}  onChange={(e)=>handleTextChange(e)} required>
-                                    <option value="" disabled selected>Subject</option>
-                                    <option value='maths'>Maths</option>
-                                    <option value='science'>Science</option>
-                                    <option value='social'>Social</option>
-                                    <option value='english'>English</option>
-                                    <option value='hindi'>Hindi</option>
-                                </select>
-                                <div className="select_arrow"></div>
-                            </div>
-                            :
-                            null
-                        }
                         <input className="button" type="button" value="Register" disabled={isSubmiting} onClick={handleSubmit}  />
                     </form>
                 </div>

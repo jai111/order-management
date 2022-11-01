@@ -7,6 +7,9 @@ const companySchema = mongoose.Schema({
         unique: true,
         required: true, 
     },
+    role:{
+        type: String,
+    }
 })      
 
 const Company = mongoose.model('Company', companySchema);

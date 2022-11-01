@@ -54,7 +54,7 @@ let AddCompany = () => {
         if(!Validate(formState)){
             return
         }
-        axios.post(`/api/company/addcompany`, formState)
+        axios.post(`/api/company/addcompany`, {company: formState.company, role: JSON.parse(localStorage.getItem('user')).role})
         .then(response =>{
             if(response.data.success){
                 setSuccessMessage('Company Created Successfully')

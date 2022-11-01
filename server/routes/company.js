@@ -5,8 +5,9 @@ const {Company} = require("../models/Company");
 const mongoose = require('mongoose');
 
 router.post("/addcompany",   (req, res) => {
-    const company = new Company({Name: req.body.company})
-    Company.findOne({Name: req.body.company}, (err, doc) =>{
+    const company = new Company({Name: req.body.company, role: req.body.role})
+    console.log(company)
+    Company.findOne({Name: req.body.company, role: req.body.role}, (err, doc) =>{
         console.log(doc)
         if(err){return res.json({success: false, err, message: 'Some error Ocurred'})}
         // if(doc.Name){
@@ -27,8 +28,8 @@ router.post("/addcompany",   (req, res) => {
    
 });
 
-router.get("/getcompanies", (req, res) =>{
-    Company.find({}, (err, companies) =>{
+router.get("/getcompanies", auth(undefined),(req, res) =>{
+    Company.find({role: req.user.role}, (err, companies) =>{
         if(err){return res.json({success: false, err, message: 'Some error Ocurred'})}
         return res.status(200).json({
             success: true,

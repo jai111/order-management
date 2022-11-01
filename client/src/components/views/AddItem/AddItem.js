@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate} from 'react-router-dom'
 
 const initialFormState = {
+   
     };
 
 
@@ -55,6 +56,7 @@ let AddItem = (props) =>{
         if(!Validate(formState)){
             return
         }
+        let formState = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
         axios.post('/api/item/additem', formState)
         .then(response => {
             if(response.data.success){

@@ -29,14 +29,24 @@ const NavBar = () => {
             <div className='navbar__title navbar__item'>Order Creator
             
             </div>
-            <li><a href="#">Options</a>
-                <ul>
-                    <li><a href="/addcompany">AddCompany</a></li>
-                    <li><a href="/additem">AddItem</a></li>
-                    <li><a href="/download-order">DownlaodOrder</a></li>
-                </ul>
-            </li>
-            <a className='btn' onClick={logoutHandler}>LogOut</a>
+            {
+                localStorage.getItem('user') != ''
+                ?
+                <>
+                    <li><a href="#">Options</a>
+                    <ul>
+                        <li><a href="/addcompany">Add Company</a></li>
+                        <li><a href="/additem">Add Item</a></li>
+                        <li><a href="/download-order">Downlaod Order</a></li>
+                        <li><a href="/delete-order">Delete Order</a></li>
+                    </ul>
+                                </li>
+                                <a className='btn' onClick={logoutHandler}>LogOut</a>
+                </>
+                :
+                null
+            }
+            
         </header>
     )
 }
