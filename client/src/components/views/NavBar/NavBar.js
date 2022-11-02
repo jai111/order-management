@@ -35,10 +35,10 @@ const NavBar = () => {
                 <>
                     <li><a href="#">Options</a>
                     <ul>
-                        <li><a href="/addcompany">Add Company</a></li>
-                        <li><a href="/additem">Add Item</a></li>
-                        <li><a href="/download-order">Downlaod Order</a></li>
-                        <li><a href="/delete-order">Delete Order</a></li>
+                        <li><Link to = "/addcompany"><div >Add company</div></Link> </li>
+                        <li><Link to = "/additem"><div >Add Item</div></Link></li>
+                        <li><Link to = "/download-order"><div >Download Order</div></Link></li>
+                        <li><Link to = "/delete-order"><div >Delete Order</div></Link></li>
                     </ul>
                                 </li>
                                 <a className='btn' onClick={logoutHandler}>LogOut</a>

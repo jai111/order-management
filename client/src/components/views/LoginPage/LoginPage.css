@@ -385,9 +385,6 @@ body {
         width: 100%;
         float: none;
    }
-   .form_wrapper{
-     margin: 35% auto 0;
-   }
     .bottom_row .col_half {
         width: 50%;
         float: left;
@@ -397,5 +394,11 @@ body {
    }
     .remember_me {
         padding-bottom: 20px;
+   }
+}
+
+@media (max-width: 600px) {
+   .form_wrapper{
+        margin:50% auto 0 !important;
    }
 }
