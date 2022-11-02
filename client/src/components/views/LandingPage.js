@@ -11,11 +11,7 @@ let LandingPage = () => {
             navigate("../login", { replace: true });
             return 
          }
-         console.log('dd')
-         let user = JSON.parse(localStorage.getItem('user'))
-         if(user.role == 'admin')  window.location.replace('/adduser')
-         if(user.role == 'non-teacher'|| user.role == 'teacher')  window.location.replace('/studentlist');
-         if(user.role == 'student')  window.location.replace('./viewresult');
+         navigate("../additem", {replace: true})
     })
 }
 
