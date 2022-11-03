@@ -56,8 +56,8 @@ let AddItem = (props) =>{
         if(!Validate(formState)){
             return
         }
-        let formState = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
-        axios.post('/api/item/additem', formState)
+        let state = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
+        axios.post('/api/item/additem', state)
         .then(response => {
             if(response.data.success){
                     setSuccessMessage('Item Added Successfuly')

@@ -49,8 +49,8 @@ let DeleteOrder = (props) =>{
         if(!Validate(formState)){
             return
         }
-        let formState = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
-        axios.post('/api/item/deleteOrder', formState)
+        let state = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
+        axios.post('/api/item/deleteOrder', state)
         .then(response => {
             if(response.data.success){
                     setSuccessMessage(response.data.message)

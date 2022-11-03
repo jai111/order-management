@@ -62,8 +62,8 @@ let DownloadOrder = (props) =>{
         if(!Validate(formState)){
             return
         }
-        let formState = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
-        axios.post('/api/item/getItemByCompany', formState)
+        let state = {...formState, role: JSON.parse(localStorage.getItem('user')).role}
+        axios.post('/api/item/getItemByCompany', state)
         .then(response => {
             if(response.data.success){
                     exportToCSV(response.data.data, `${formState.company} Order`)
