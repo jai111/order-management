@@ -6,12 +6,15 @@ let LandingPage = () => {
 
     let navigate = useNavigate()
     useEffect(()=>{
-        if(localStorage.getItem('user') == ''){
+        if(! localStorage.getItem('user') ){
             console.log('here')
             navigate("../login", { replace: true });
             return 
-         }
-         navigate("../additem", {replace: true})
+         } 
+        else{
+            navigate("../additem", { replace: true });
+            return
+        } 
     })
 }
 

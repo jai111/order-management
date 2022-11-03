@@ -28,8 +28,8 @@ router.post("/addcompany",   (req, res) => {
    
 });
 
-router.get("/getcompanies", auth(undefined),(req, res) =>{
-    Company.find({role: req.user.role}, (err, companies) =>{
+router.post("/getcompanies",(req, res) =>{
+    Company.find({role: req.body.role}, (err, companies) =>{
         if(err){return res.json({success: false, err, message: 'Some error Ocurred'})}
         return res.status(200).json({
             success: true,
@@ -38,4 +38,4 @@ router.get("/getcompanies", auth(undefined),(req, res) =>{
     })
 })
 
-module.exports = router;
+module.exports = router

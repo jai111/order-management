@@ -30,7 +30,7 @@ const NavBar = () => {
             
             </div>
             {
-                localStorage.getItem('user') != ''
+                localStorage.getItem('user') 
                 ?
                 <>
                     <li><a href="#">Options</a>
