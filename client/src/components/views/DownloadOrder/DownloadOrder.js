@@ -48,7 +48,7 @@ let DownloadOrder = (props) =>{
     const [data, setData] = useState([])
     const [companyData, setCompanyData] = useState([])
     useEffect(()=>{
-        axios.get('/api/company/getcompanies')
+        axios.post('/api/company/getcompanies', {role: JSON.parse(localStorage.getItem('user')).role})
         .then(response =>{
             console.log(response.data)
             setData(response.data.companies)
