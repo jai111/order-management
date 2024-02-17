@@ -4,7 +4,7 @@ import React, { useEffect, useState, useReducer } from 'react'
 import {useParams} from 'react-router-dom'
 
 const initialFormState = {}
-
+axios.defaults.baseURL = 'https://backend-tcek.onrender.com'
 
 let AddCompany = () => {
 
