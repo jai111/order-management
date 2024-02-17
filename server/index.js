@@ -30,17 +30,6 @@ app.use('/api/company', require('./routes/company'));
 app.use('/api/item', require('./routes/item'));
 app.use('/api/users', require('./routes/users'));
 
-if (process.env.NODE_ENV === "production") {
-
-  // Set static folder   
-  // All the javascript and css files will be read and served from this folder
-  app.use(express.static("client/build"));
-
-  // index.html for all page routes    html or routing and naviagtion
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
-  });
-}
 
 
 
