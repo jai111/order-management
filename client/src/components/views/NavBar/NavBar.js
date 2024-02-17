@@ -3,6 +3,8 @@ import './NavBar.css'
 import axios from 'axios'
 import { Link, useNavigate} from 'react-router-dom'
 
+axios.defaults.baseURL = 'https://backend-tcek.onrender.com'
+
 const NavBar = () => {
 
     let navigate = useNavigate()
