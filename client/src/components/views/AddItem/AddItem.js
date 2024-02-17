@@ -7,6 +7,7 @@ const initialFormState = {
    
     };
 
+axios.defaults.baseURL = 'https://backend-tcek.onrender.com'
 
 let AddItem = (props) =>{
 
