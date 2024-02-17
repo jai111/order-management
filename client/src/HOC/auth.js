@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate} from 'react-router-dom'
 import AcessDenied from '../components/views/AcessDenied/AcessDenied'
 
+axios.defaults.baseURL = 'https://backend-tcek.onrender.com'
+
 let Auth = (component, role) => {
     let navigate = useNavigate()
     const [show, setShow] = useState(true)
